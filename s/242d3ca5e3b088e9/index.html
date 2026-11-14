@@ -1,0 +1,79 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Elenco interno per il CAD di Informatica: syllabi da completare (offerta 2026/27)</title><meta name="worknest-published" content="2026-11-13T00:03:03"><meta name="robots" content="noindex,nofollow"><style>@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("/pages/fonts/inter.woff2") format("woff2")}
+:root{--bg:#ffffff;--ground:#e9e7e2;--band:#f3f1ed;--stripe:#faf9f6;--text:#1f2328;--muted:#6a737d;--head:#4b5259;--rule:#e4e1dc;--link:#1f5fbf;--code:#f3f1ed;--mark:#fff1a8}
+@media (prefers-color-scheme:dark){:root{--bg:#1d1e21;--ground:#111214;--band:#26282c;--stripe:#222327;--text:#e6e6e3;--muted:#9a9ea4;--head:#c2c5ca;--rule:#33353a;--link:#7fb0ff;--code:#24262a;--mark:#5c4f12}}
+*{box-sizing:border-box}
+html{background:var(--ground);color:var(--text)}
+body{margin:0;font:16px/1.6 "Inter","InterVariable",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-text-size-adjust:100%}
+.top{max-width:960px;margin:0 auto;padding:16px 20px 0}
+.cover{position:relative;height:240px;border-radius:12px;background:var(--rule) center/cover no-repeat;overflow:hidden}
+.credit{position:absolute;right:10px;bottom:10px;max-width:70%;padding:3px 8px;border-radius:6px;background:rgba(0,0,0,.55);
+color:#fff;font-size:12px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none}
+main{max-width:960px;margin:0 auto;padding:32px 20px 64px}
+.sheet{max-width:1040px;margin:48px auto 0;background:var(--bg);border-radius:16px;overflow:hidden;
+box-shadow:0 1px 2px rgba(0,0,0,.06),0 12px 40px rgba(0,0,0,.08)}
+.sheet .top{max-width:none;padding:0}
+.sheet .cover{height:260px;border-radius:0}
+.sheet main{max-width:none;padding:48px 56px 48px}
+.sheet main.has-cover{padding-top:0}
+h1,h2,h3,h4{line-height:1.25;margin:1.6em 0 .5em;letter-spacing:-.01em}
+h1.title{font-size:40px;font-weight:700;letter-spacing:-.02em;margin:20px 0 32px}
+.page-icon{display:inline-flex;margin:0 0 12px;color:var(--text)}
+.page-icon img{width:56px;height:56px;object-fit:cover;border-radius:8px}
+.has-cover .page-icon{position:relative;margin:-40px 0 0;padding:14px;border-radius:16px;background:var(--bg);box-shadow:0 4px 14px rgba(0,0,0,.10)}
+.has-cover .page-icon svg,.has-cover .page-icon img{width:44px;height:44px}
+.nt{margin:0 0 28px}
+.nt-head{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-weight:600;font-size:18px}
+.nt-icon{color:var(--muted)}
+.nt-n{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:11px;
+background:var(--text);color:var(--bg);font-size:12px;font-weight:600}
+.nt-n.nt-zero{background:var(--rule);color:var(--head)}
+.nt-scroll{overflow-x:auto;scrollbar-width:thin;border:1px solid var(--rule);border-radius:10px;
+background:linear-gradient(to right,var(--bg) 30%,transparent) left/40px 100% no-repeat local,
+linear-gradient(to left,var(--bg) 30%,transparent) right/40px 100% no-repeat local,
+radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.16),transparent) left/14px 100% no-repeat scroll,
+radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.16),transparent) right/14px 100% no-repeat scroll}
+.nt-scroll::-webkit-scrollbar{height:8px}
+.nt-scroll::-webkit-scrollbar-thumb{background:var(--rule);border-radius:4px}
+table.nt-table{display:table;width:100%;margin:0}
+.nt-table th{border:0;padding:10px 14px;font-weight:600;color:var(--head);font-size:13px;background:var(--band);white-space:normal;vertical-align:bottom}
+.nt-table td{border:0;padding:11px 14px;white-space:nowrap;font-size:15px}
+.nt-table tbody tr:nth-child(even) td{background:var(--stripe)}
+.nt-table .opt{min-width:24px;border-radius:12px;text-align:center;font-weight:600}
+.nt-table td.nt-title{color:var(--link);font-weight:600;white-space:normal;min-width:10ch;max-width:28ch}
+.nt-table td.nt-rich_text{white-space:normal;min-width:12ch;max-width:32ch}
+.nt-table td.nt-email{white-space:normal}
+.nt-table td.nt-number{text-align:right;font-variant-numeric:tabular-nums}
+.nt-files{color:var(--muted)}
+.nt-empty{margin:0;padding:28px;border:1px dashed var(--rule);border-radius:10px;text-align:center;color:var(--muted)}
+.opt{--o:#9b9a97;display:inline-block;margin-right:4px;padding:0 7px;border-radius:4px;line-height:22px;font-size:13.5px;
+background:color-mix(in srgb,var(--o) 22%,var(--bg));color:color-mix(in srgb,var(--o) 55%,var(--text))}
+.opt-default{--o:#9b9a97}.opt-gray{--o:#9b9a97}.opt-brown{--o:#a5714f}.opt-orange{--o:#d9730d}.opt-yellow{--o:#cb912f}
+.nt-row{cursor:pointer}
+.nt-table tbody .nt-row:hover td,.nt-table tbody .nt-row:focus-visible td{background:color-mix(in srgb,var(--rule) 45%,transparent)}
+.nt-row:focus-visible{outline:none}
+.ov{position:fixed;inset:0;z-index:10;display:flex;align-items:flex-start;justify-content:center;padding:6vh 16px;overflow:auto;background:rgba(0,0,0,.38)}
+.ov[hidden]{display:none}
+.ov-box{position:relative;width:100%;max-width:780px;padding:22px 26px 26px;border-radius:14px;background:var(--bg);box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.ov-x{position:absolute;top:18px;right:18px;padding:4px 12px;border:1px solid var(--rule);border-radius:7px;background:var(--bg);color:var(--text);font:inherit;font-size:13.5px;cursor:pointer}
+.ov-head h2{margin:0 90px 14px 0;font-size:1.5em}
+.ov-props{display:grid;grid-template-columns:minmax(120px,220px) 1fr;gap:6px 18px;margin:0 0 18px;padding:0 0 16px;border-bottom:1px solid var(--rule)}
+.ov-props>div{display:contents}
+.ov-props dt{color:var(--muted);font-size:14px}
+.ov-props dd{margin:0;overflow-wrap:anywhere}
+.ov-empty{color:var(--muted)}
+@media (max-width:560px){.ov-props{grid-template-columns:1fr}.ov-props dd{margin-bottom:6px}}
+.opt-green{--o:#448361}.opt-blue{--o:#337ea9}.opt-purple{--o:#9065b0}.opt-pink{--o:#c14c8a}.opt-red{--o:#d44c47}
+a{color:var(--link)}
+img{max-width:100%;height:auto;border-radius:4px}
+blockquote{margin:1em 0;padding-left:16px;border-left:3px solid var(--rule);color:var(--muted)}
+code{font:.88em ui-monospace,Menlo,monospace;background:var(--code);padding:1px 4px;border-radius:3px}
+pre{background:var(--code);padding:12px 14px;border-radius:6px;overflow:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;display:block;overflow-x:auto;margin:1em 0}
+th,td{border:1px solid var(--rule);padding:6px 10px;text-align:left;vertical-align:top}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+mark{background:var(--mark);color:inherit}
+footer{max-width:1040px;margin:18px auto 0;padding:0 20px 40px;color:var(--muted);font-size:13px;text-align:center}
+@media (max-width:640px){.sheet{margin:0;border-radius:0;box-shadow:none}.sheet main{padding:32px 18px 32px}
+.sheet main.has-cover{padding-top:0}.sheet .cover{height:180px}h1.title{font-size:30px;margin-bottom:24px}}
+</style></head><body><article class="sheet"><div class="top"><div class="cover" style="background:#bfe0cf"></div></div><main class="has-cover"><div class="page-icon"><svg viewBox="0 0 16 16" width="56" height="56" fill="currentColor" aria-hidden="true"><path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/><path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/></svg></div><h1 class="title">Elenco interno per il CAD di Informatica: syllabi da completare (offerta 2026/27)</h1><p>Uso interno, non allegare alla Relazione. Controllo della CPDS sul Course Catalogue, 12/11/2026.</p><table><thead><tr><th>Anno</th><th>Coorte</th><th>Insegnamento</th><th>Problema</th></tr></thead><tbody><tr><td>2</td><td>2025</td><td>Sistemi Operativi Con Laboratorio</td><td>sezione Risultati di apprendimento attesi vuota; propedeuticita del Regolamento non riportata: Laboratorio Di Programmazione Di Sistema</td></tr><tr><td>3</td><td>2024</td><td>Conoscenza Della Lingua Inglese (Livello B2)</td><td>verifica senza criteri o pesi</td></tr><tr><td>1</td><td>2026</td><td>Fondamenti Di Programmazione Con Laboratorio</td><td>sezione Risultati di apprendimento attesi vuota</td></tr><tr><td>2</td><td>2025</td><td>Algoritmi E Strutture Dati Con Laboratorio</td><td>sezione Risultati di apprendimento attesi vuota</td></tr><tr><td>3</td><td>2024</td><td>Reti Di Calcolatori Evolute: Architetture</td><td>verifica senza criteri o pesi</td></tr><tr><td>3</td><td>2024</td><td>Modelli E Algoritmi Per La Finanza Aziendale</td><td>propedeuticita del Regolamento non riportata: Algoritmi E Strutture Dati</td></tr><tr><td>1</td><td>2026</td><td>Calcolo Delle Probabilita' E Statistica Matematica</td><td>verifica senza criteri o pesi</td></tr><tr><td>1</td><td>2026</td><td>Matematica Discreta</td><td>sezione Risultati di apprendimento attesi vuota</td></tr><tr><td>2</td><td>2025</td><td>Basi Di Dati Con Laboratorio</td><td>sezione Risultati di apprendimento attesi vuota</td></tr><tr><td>2</td><td>2025</td><td>Ricerca Operativa E Ottimizzazione</td><td>sezione Risultati di apprendimento attesi vuota</td></tr><tr><td>3</td><td>2024</td><td>Informatica Forense</td><td>syllabus privo di testi (verificare se erogato)</td></tr><tr><td>2</td><td>2025</td><td>Calcolo Delle Probabilita' E Statistica Matematica</td><td>syllabus privo di testi (verificare se erogato)</td></tr><tr><td>1</td><td>2026</td><td>Conoscenza Della Lingua Inglese (Livello B2)</td><td>syllabus privo di testi (verificare se erogato)</td></tr><tr><td>3</td><td>2024</td><td>Intelligent Systems And Robotics Laboratory</td><td>syllabus privo di testi (verificare se erogato)</td></tr><tr><td>3</td><td>2024</td><td>Modelli E Algoritmi Per La Finanza Aziendale Ii</td><td>syllabus privo di testi (verificare se erogato)</td></tr></tbody></table></main></article><footer>Aggiornata il 13 novembre 2026</footer></body></html>

@@ -1,0 +1,291 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light dark"><title>Riunione CPDS</title><style>@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("/pages/fonts/inter.woff2") format("woff2")}
+:root{--ground:#f5f5f3;--sheet:#fff;--raised:#fafaf8;--text:#1b1d23;--text2:#41454f;--dim:#6b7079;--rule:#e6e6e2;--rule2:#d3d3ce;
+--accent:#3f48b8;--accent-ink:#fff;--accent-soft:#eceefa;
+--yes:#1a7442;--yes-bg:#e3f2e8;--maybe:#8a5a00;--maybe-bg:#faf0d6;--no:#a8322a;--no-bg:#f9e5e2;
+--shadow:0 1px 2px rgba(20,22,30,.04),0 2px 10px rgba(20,22,30,.04)}
+@media (prefers-color-scheme:dark){:root{--ground:#121315;--sheet:#1b1c1f;--raised:#222327;--text:#ecedef;--text2:#c3c6cc;--dim:#979ca5;
+--rule:#2d2f34;--rule2:#3a3d43;--accent:#8b93ef;--accent-ink:#14151a;--accent-soft:#262948;
+--yes:#5fcf8f;--yes-bg:#173022;--maybe:#e6b54a;--maybe-bg:#352a12;--no:#ff8f86;--no-bg:#3a1c19;--shadow:none}}
+*{box-sizing:border-box}
+html{background:var(--ground);color:var(--text);overflow-x:hidden}
+body{margin:0;font:15px/1.5 "Inter","InterVariable",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
+main{max-width:720px;margin:0 auto;padding:48px 16px 0}
+.hero{padding:0 0 28px}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.eyebrow svg{width:14px;height:14px}
+h1{font-size:30px;line-height:1.2;margin:6px 0 0;letter-spacing:-.02em;font-weight:700}
+.by{margin:6px 0 0;color:var(--text2);font-size:15px}
+.desc{white-space:pre-wrap;margin:14px 0 0;color:var(--text2);font-size:15px;max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin:18px 0 0;padding:16px 0 0;list-style:none;border-top:1px solid var(--rule)}
+.meta li{display:inline-flex;align-items:center;gap:7px;font-size:14px;color:var(--text2)}
+.meta svg{width:15px;height:15px;color:var(--dim);flex:none}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow);margin:0 0 16px;overflow:hidden}
+.head{display:flex;align-items:center;gap:16px;padding:18px 20px 16px;border-bottom:1px solid var(--rule)}
+.head>div{flex:1 1 auto;min-width:0}
+.head h2{margin:0;font-size:16px;font-weight:600;letter-spacing:-.01em}
+.head p{margin:3px 0 0;color:var(--dim);font-size:14px}
+.ghost{flex:none;font:inherit;font-size:13px;font-weight:500;color:var(--text2);background:var(--sheet);border:1px solid var(--rule2);
+min-height:34px;padding:0 12px;border-radius:8px;cursor:pointer;white-space:nowrap;transition:background .15s ease-out,border-color .15s ease-out}
+.ghost:hover{background:var(--raised);border-color:var(--dim);color:var(--text)}
+.day{display:grid;grid-template-columns:48px minmax(0,1fr);gap:0 16px;padding:14px 20px}
+.day+.day{border-top:1px solid var(--rule)}
+.tile{width:48px;border:1px solid var(--rule2);border-radius:9px;text-align:center;overflow:hidden;align-self:start;background:var(--sheet)}
+.tile .mo{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:2px 0 1px}
+.tile .dn{display:block;font-size:19px;font-weight:700;line-height:1;padding:6px 0 7px;font-variant-numeric:tabular-nums}
+.dayname{display:flex;align-items:center;gap:8px;min-height:22px;font-size:13px;color:var(--dim)}
+.dayname .dow::first-letter{text-transform:uppercase}
+.link{margin-left:auto;font:inherit;font-size:13px;font-weight:500;color:var(--accent);background:none;border:0;padding:2px 6px;border-radius:6px;cursor:pointer}
+.link:hover{background:var(--accent-soft)}
+.slot{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;padding:2px 0}
+.slot+.slot{border-top:1px dashed var(--rule);margin-top:6px;padding-top:8px}
+.when{flex:1 1 140px;min-width:0}
+.when b{font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.when small{display:block;color:var(--dim);font-size:12px;line-height:1.4}
+.tally{display:flex;align-items:center;gap:8px;margin-top:4px}
+.tally:empty{display:none}
+.bar{display:flex;width:72px;height:5px;border-radius:3px;overflow:hidden;background:var(--rule)}
+.bar i{display:block;height:100%}.bar .y{background:var(--yes)}.bar .m{background:var(--maybe)}
+.tally span{color:var(--dim);font-size:12px;font-variant-numeric:tabular-nums}
+.seg{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.45fr) minmax(0,.8fr);width:360px;max-width:100%;padding:3px;gap:3px;border-radius:10px;
+background:var(--ground);border:1px solid var(--rule)}
+.seg button{font:inherit;font-size:13.5px;font-weight:500;min-height:34px;padding:0 8px;border-radius:7px;border:1px solid transparent;
+background:transparent;color:var(--text2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;
+transition:background .15s ease-out,color .15s ease-out,border-color .15s ease-out}
+.seg button svg{width:14px;height:14px;flex:none;opacity:.45}
+.seg button:hover{background:var(--sheet);color:var(--text)}
+.seg button[aria-pressed=true]{font-weight:600;box-shadow:0 1px 2px rgba(20,22,30,.06)}
+.seg button[aria-pressed=true] svg{opacity:1}
+.seg button[aria-pressed=true].yes{background:var(--yes-bg);border-color:color-mix(in srgb,var(--yes) 40%,transparent);color:var(--yes)}
+.seg button[aria-pressed=true].maybe{background:var(--maybe-bg);border-color:color-mix(in srgb,var(--maybe) 40%,transparent);color:var(--maybe)}
+.seg button[aria-pressed=true].no{background:var(--no-bg);border-color:color-mix(in srgb,var(--no) 40%,transparent);color:var(--no)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;padding:6px 20px 20px}
+.fields .wide{grid-column:1/-1}
+label{display:block;font-size:13px;font-weight:500;color:var(--text2);margin:10px 0 6px}
+.hint{margin:6px 0 0;font-size:12.5px;color:var(--dim)}
+input,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--rule2);border-radius:9px;background:var(--sheet);color:var(--text);
+transition:border-color .15s ease-out,box-shadow .15s ease-out}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+textarea{min-height:76px;resize:vertical}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dock{position:sticky;bottom:0;z-index:2;margin:8px calc(50% - 50vw) 0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);
+border-top:1px solid var(--rule)}
+.dock-in{max-width:688px;margin:0 auto;display:flex;align-items:center;gap:16px}
+.dock-text{flex:1 1 auto;min-width:0}
+.progress{font-size:14px;font-weight:500;color:var(--text2);font-variant-numeric:tabular-nums}
+.status{margin:2px 0 0;font-size:13px;color:var(--dim)}
+.status:empty{display:none}
+.status.err{color:var(--no)}.status.ok{color:var(--yes)}
+.send{flex:none;font:inherit;font-size:15px;font-weight:600;padding:0 22px;min-height:44px;border-radius:10px;border:0;background:var(--accent);
+color:var(--accent-ink);cursor:pointer;box-shadow:0 1px 2px rgba(20,22,30,.12);transition:filter .15s ease-out}
+.send:hover{filter:brightness(1.08)}
+.send[disabled]{opacity:.6;cursor:default}
+.votes{padding:16px 20px 20px}
+.votes .note{color:var(--dim);font-size:14px;margin:0}
+.matrix{overflow-x:auto;border:1px solid var(--rule);border-radius:10px}
+table{border-collapse:collapse;font-size:13px;width:100%}
+th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:center;white-space:nowrap}
+th{font-weight:500;color:var(--dim);font-size:12px;line-height:1.35}
+tr:last-child td{border-bottom:0;font-weight:600}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--sheet)}
+td.y{color:var(--yes)}td.m{color:var(--maybe)}td.n{color:var(--no)}
+tr.me td:first-child{font-weight:600}
+.cm{white-space:normal;text-align:left;color:var(--dim);max-width:260px}
+.chosen{padding:22px 20px;display:flex;gap:14px;align-items:flex-start}
+.chosen svg{flex:none;width:28px;height:28px;color:var(--yes)}
+.chosen p{margin:0;color:var(--dim)}
+.chosen b{display:block;font-size:20px;letter-spacing:-.01em;margin-top:2px;color:var(--text)}
+.chosen small{display:block;color:var(--dim);margin-top:2px}
+footer{color:var(--dim);font-size:12px;padding:24px 0 32px;line-height:1.5}
+@media (max-width:560px){
+main{padding-top:28px}h1{font-size:24px}
+.head{padding:16px;flex-wrap:wrap}.day{padding:14px 16px;grid-template-columns:42px minmax(0,1fr);gap:0 12px}.tile{width:42px}
+.fields{padding:6px 16px 16px;grid-template-columns:1fr}.votes{padding:16px}
+.seg{width:100%}.seg button{padding:0 2px;font-size:13px;gap:4px}
+.send{padding:0 16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body data-endpoint="https://default9df08a7c31d740249ba65ed5efac1a.01.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/23/workflows/b80addebd7e44005a7c94d807a2a1c19/triggers/manual/paths/invoke?api-version=1&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=kVN8aGZXRVRmE6f4hTX7LihrCbTohY6xlJ-kN0UlcDk"><main><header class="hero"><span class="eyebrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.75v2.5M10.5 1.75v2.5" stroke-linecap="round"/></svg>Sondaggio di date</span><h1>Riunione CPDS</h1><p class="by">Organizzato da Alfonso Pierantonio · Università degli Studi dell’Aquila</p><ul class="meta"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M8 4.5V8l2.5 1.5" stroke-linecap="round"/></svg>60 minuti</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.75" y="4" width="9" height="8" rx="1.5"/><path d="m10.75 7 3.5-2v6l-3.5-2" stroke-linejoin="round"/></svg>Online su Microsoft Teams</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M1.75 8h12.5M8 1.75c1.8 1.9 2.6 3.9 2.6 6.25S9.8 12.35 8 14.25C6.2 12.35 5.4 10.35 5.4 8S6.2 3.65 8 1.75Z"/></svg>Orari nel fuso di Roma</li></ul></header><div id="app"><noscript><p>Per rispondere serve JavaScript.</p></noscript></div><footer>Pagina creata con Worknest.</footer></main><template id="icon-ok"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7" stroke-linecap="round" stroke-linejoin="round"/></svg></template><template id="icon-may"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5.6 8.4 1.7 1.7 3.1-3.8"/><path d="M3.4 3.2c-1.7 2.8-1.7 6.8 0 9.6M12.6 3.2c1.7 2.8 1.7 6.8 0 9.6"/></svg></template><template id="icon-x"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m4.5 4.5 7 7m0-7-7 7" stroke-linecap="round"/></svg></template><template id="icon-cal"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.75v2.5M10.5 1.75v2.5" stroke-linecap="round"/></svg></template><script type="application/json" id="poll">{"id": "4d9ba51a84b945165bb55d9b0f344762", "title": "Riunione CPDS", "organizer": "Alfonso Pierantonio", "affiliation": "Università degli Studi dell’Aquila", "description": "", "duration": 60, "location": "", "online": true, "lang": "it", "show_votes": false, "status": "closed", "chosen": "a809ae", "slots": [{"id": "a809ae", "start": "2026-11-13T08:00:00Z", "end": "2026-11-13T09:00:00Z"}, {"id": "c31191", "start": "2026-11-13T09:00:00Z", "end": "2026-11-13T10:00:00Z"}, {"id": "4bc673", "start": "2026-11-13T10:00:00Z", "end": "2026-11-13T11:00:00Z"}, {"id": "6bb457", "start": "2026-11-13T11:00:00Z", "end": "2026-11-13T12:00:00Z"}, {"id": "8f337b", "start": "2026-11-13T13:00:00Z", "end": "2026-11-13T14:00:00Z"}, {"id": "72a97a", "start": "2026-11-13T14:00:00Z", "end": "2026-11-13T15:00:00Z"}, {"id": "c5dcd4", "start": "2026-11-16T08:00:00Z", "end": "2026-11-16T09:00:00Z"}, {"id": "c1c59e", "start": "2026-11-16T09:00:00Z", "end": "2026-11-16T10:00:00Z"}, {"id": "296779", "start": "2026-11-16T10:00:00Z", "end": "2026-11-16T11:00:00Z"}, {"id": "53c8c7", "start": "2026-11-16T11:00:00Z", "end": "2026-11-16T12:00:00Z"}, {"id": "a498be", "start": "2026-11-16T13:00:00Z", "end": "2026-11-16T14:00:00Z"}, {"id": "0ed78a", "start": "2026-11-16T14:00:00Z", "end": "2026-11-16T15:00:00Z"}]}</script><script type="application/json" id="text">{"kind": "Sondaggio di date", "duration": "Durata", "min": "minuti", "where": "Luogo", "online": "Online su Microsoft Teams", "intro": "Indica la tua disponibilità per ciascun orario. Potrai tornare su questa pagina per modificare le risposte.", "step1": "Disponibilità", "step2": "I tuoi dati", "by": "Organizzato da {name}", "yes": "Sì", "maybe": "Se necessario", "no": "No", "all_yes": "Sì a tutti", "all_yes_poll": "Sì a tutti gli orari", "progress": "Hai risposto per {n} orari su {m}", "progress1": "Hai risposto per 1 orario su {m}", "progress_none": "Nessuna risposta indicata", "name": "Nome e cognome", "email": "Email (facoltativa)", "email_hint": "La vede soltanto l'organizzatore.", "comment": "Commento (facoltativo)", "send": "Invia le risposte", "update": "Aggiorna le risposte", "sending": "Invio…", "sent": "Risposte registrate. Grazie!", "failed": "Invio non riuscito: riprova tra poco.", "need_name": "Scrivi il tuo nome.", "need_answer": "Rispondi almeno per un orario.", "answers": "Risposte finora", "none": "Nessuna risposta per ora.", "you": "tu", "closed": "Il sondaggio è chiuso.", "chosen": "Data scelta", "your_time": "da te", "times": "Orari nel fuso di Roma", "noscript": "Per rispondere serve JavaScript.", "total": "Totale", "loading": "Carico le risposte…", "people": "risposte", "foot": "Pagina creata con Worknest."}</script><script>
+(function () {
+  var D = JSON.parse(document.getElementById("poll").textContent), T = JSON.parse(document.getElementById("text").textContent);
+  var EP = document.body.getAttribute("data-endpoint"), HOME = "Europe/Rome";
+  var locale = D.lang === "en" ? "en-GB" : "it-IT";
+  var mine = load(), answers = Object.assign({}, mine.answers || {});
+  var viewer = ""; try { viewer = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+  function load() { try { return JSON.parse(localStorage.getItem("wn-poll-" + D.id) || "{}"); } catch (e) { return {}; } }
+  function save(v) { try { localStorage.setItem("wn-poll-" + D.id, JSON.stringify(v)); } catch (e) {} }
+  function token() {
+    if (mine.token) return mine.token;
+    var a = new Uint8Array(16); (window.crypto || window.msCrypto).getRandomValues(a);
+    var s = ""; for (var i = 0; i < a.length; i++) s += ("0" + a[i].toString(16)).slice(-2);
+    return s;
+  }
+  function fmt(iso, tz, opts) { return new Intl.DateTimeFormat(locale, Object.assign({ timeZone: tz }, opts)).format(new Date(iso)); }
+  function hm(iso, tz) { return fmt(iso, tz, { hour: "2-digit", minute: "2-digit" }); }
+  function dayOf(iso) { return fmt(iso, HOME, { weekday: "long", day: "numeric", month: "long", year: "numeric" }); }
+  function span(s) { return hm(s.start, HOME) + "–" + hm(s.end, HOME); }
+  function other(s) {
+    if (!viewer || viewer === HOME) return "";
+    var a = hm(s.start, viewer), b = hm(s.end, viewer);
+    if (a === hm(s.start, HOME) && fmt(s.start, viewer, { day: "numeric" }) === fmt(s.start, HOME, { day: "numeric" })) return "";
+    return fmt(s.start, viewer, { weekday: "short", day: "numeric", month: "short" }) + ", " + a + "–" + b + " " + T.your_time + " (" + viewer + ")";
+  }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function icon(name) { var s = el("span"); s.innerHTML = document.getElementById("icon-" + name).innerHTML; return s.firstChild; }
+  var tallies = {}, rows = [];
+  var root = document.getElementById("app");
+  if (D.status === "closed") {
+    var c = D.slots.filter(function (s) { return s.id === D.chosen; })[0];
+    var card = el("section", "card"), box = el("div", "chosen"), txt = el("div");
+    box.appendChild(icon("cal")); txt.appendChild(el("p", null, T.closed));
+    if (c) { txt.appendChild(el("b", null, dayOf(c.start) + ", " + span(c))); var o = other(c); if (o) txt.appendChild(el("small", null, o)); }
+    box.appendChild(txt); card.appendChild(box); root.appendChild(card);
+    return;
+  }
+  function head(title, text, id) {
+    var h = el("div", "head"), t = el("div"), h2 = el("h2", null, title);
+    if (id) h2.id = id; t.appendChild(h2); if (text) t.appendChild(el("p", null, text));
+    h.appendChild(t); return h;
+  }
+
+  // Step 1: the times, by day: a date tile on the left, the times of that day on the right.
+  var times = el("section", "card"); times.setAttribute("aria-labelledby", "s1");
+  var h1 = head(T.step1, T.intro, "s1"); times.appendChild(h1);
+  function allYes(list) { list.forEach(function (x) { answers[x.id] = "yes"; }); paint(); }
+  if (D.slots.length > 1) {
+    var every = el("button", "ghost", T.all_yes_poll); every.type = "button";
+    every.addEventListener("click", function () { allYes(D.slots); }); h1.appendChild(every);
+  }
+  var groups = [], last = "", group = null;
+  D.slots.forEach(function (s) {
+    var d = dayOf(s.start);
+    if (d !== last) {
+      group = { el: el("div", "day"), list: el("div", "slots"), name: el("div", "dayname"), slots: [] }; groups.push(group); last = d;
+      var tile = el("div", "tile"); tile.setAttribute("aria-hidden", "true");
+      tile.appendChild(el("span", "mo", fmt(s.start, HOME, { month: "short" }).replace(".", "")));
+      tile.appendChild(el("span", "dn", fmt(s.start, HOME, { day: "numeric" })));
+      group.name.appendChild(el("span", "dow", fmt(s.start, HOME, { weekday: "long", day: "numeric", month: "long" })));
+      group.list.appendChild(group.name); group.el.appendChild(tile); group.el.appendChild(group.list);
+    }
+    group.slots.push(s);
+    var row = el("div", "slot"), w = el("div", "when");
+    w.appendChild(el("b", null, span(s))); var o = other(s); if (o) w.appendChild(el("small", null, o));
+    var t = el("div", "tally"); tallies[s.id] = t; w.appendChild(t);
+    var seg = el("div", "seg"); seg.setAttribute("role", "group"); seg.setAttribute("aria-label", d + " " + span(s));
+    ["yes", "maybe", "no"].forEach(function (k) {
+      var bt = el("button", k); bt.type = "button";
+      bt.appendChild(icon(k === "yes" ? "ok" : k === "maybe" ? "may" : "x")); bt.appendChild(document.createTextNode(T[k]));
+      bt.addEventListener("click", function () {
+        if (answers[s.id] === k) delete answers[s.id]; else answers[s.id] = k;
+        paint();
+      });
+      seg.appendChild(bt);
+    });
+    row.appendChild(w); row.appendChild(seg); group.list.appendChild(row);
+    rows.push({ s: s, row: row, seg: seg });
+  });
+  groups.forEach(function (g) {
+    if (g.slots.length > 1) {
+      var all = el("button", "link", T.all_yes); all.type = "button";
+      all.addEventListener("click", function () { allYes(g.slots); }); g.name.appendChild(all);
+    }
+    times.appendChild(g.el);
+  });
+  root.appendChild(times);
+
+  // Step 2: who is answering.
+  var who = el("section", "card"); who.setAttribute("aria-labelledby", "s2");
+  who.appendChild(head(T.step2, null, "s2"));
+  var fields = el("div", "fields"); who.appendChild(fields);
+  function field(id, label, kind, value, wide) {
+    var box = el("div", wide ? "wide" : null), l = el("label", null, label); l.htmlFor = id; box.appendChild(l);
+    var f = document.createElement(kind === "area" ? "textarea" : "input"); f.id = id;
+    if (kind !== "area") f.type = kind; f.value = value || ""; box.appendChild(f); fields.appendChild(box); return f;
+  }
+  var name = field("n", T.name, "text", mine.name), email = field("e", T.email, "email", mine.email),
+      comment = field("c", T.comment, "area", mine.comment, true);
+  var eh = el("p", "hint", T.email_hint); eh.id = "eh"; email.parentNode.appendChild(eh); email.setAttribute("aria-describedby", "eh");
+  name.maxLength = 100; name.autocomplete = "name"; email.maxLength = 200; email.autocomplete = "email"; comment.maxLength = 500;
+  root.appendChild(who);
+
+  var votesCard = el("section", "card"); votesCard.hidden = true; root.appendChild(votesCard);
+
+  // The dock: how many times are answered, the outcome, the button.
+  var dock = el("div", "dock"), din = el("div", "dock-in"), dt = el("div", "dock-text");
+  var prog = el("div", "progress"), st = el("p", "status"); st.setAttribute("role", "status");
+  dt.appendChild(prog); dt.appendChild(st);
+  var send = el("button", "send", mine.token ? T.update : T.send); send.type = "button";
+  din.appendChild(dt); din.appendChild(send); dock.appendChild(din); root.appendChild(dock);
+
+  function paint() {
+    rows.forEach(function (r) {
+      var a = answers[r.s.id];
+      if (a) r.row.setAttribute("data-a", a); else r.row.removeAttribute("data-a");
+      Array.prototype.forEach.call(r.seg.children, function (x) { x.setAttribute("aria-pressed", a && x.classList.contains(a) ? "true" : "false"); });
+    });
+    var n = Object.keys(answers).length;
+    prog.textContent = !n ? T.progress_none : (n === 1 ? T.progress1 : T.progress).replace("{n}", n).replace("{m}", D.slots.length);
+  }
+  paint();
+
+  function post(body) {
+    return fetch(EP, { method: "POST", headers: { "Content-Type": "text/plain;charset=UTF-8" }, body: JSON.stringify(body) })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
+  }
+  send.addEventListener("click", function () {
+    st.className = "status err";
+    if (!Object.keys(answers).length) { st.textContent = T.need_answer; times.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    if (!name.value.trim()) { st.textContent = T.need_name; name.focus(); return; }
+    var t = token();
+    send.disabled = true; st.className = "status"; st.textContent = T.sending;
+    post({ action: "vote", poll: D.id, token: t, name: name.value.trim().slice(0, 100), email: email.value.trim().slice(0, 200),
+           answers: JSON.stringify(answers), comment: comment.value.trim().slice(0, 500) })
+      .then(function () {
+        mine = { token: t, name: name.value.trim(), email: email.value.trim(), comment: comment.value.trim(), answers: answers };
+        save(mine); st.className = "status ok"; st.textContent = T.sent; send.textContent = T.update; refresh();
+      })
+      .catch(function () { st.className = "status err"; st.textContent = T.failed; })
+      .then(function () { send.disabled = false; });
+  });
+  function refresh() {
+    if (!D.show_votes) return;
+    votesCard.hidden = false; votesCard.innerHTML = "";
+    votesCard.appendChild(head(T.answers));
+    var box = el("div", "votes"), wait = el("p", "note", T.loading); box.appendChild(wait); votesCard.appendChild(box);
+    post({ action: "votes", poll: D.id }).then(function (r) {
+      var by = {};
+      (r.votes || []).forEach(function (v) { if (!by[v.token] || (v.at || "") >= (by[v.token].at || "")) by[v.token] = v; });
+      var vs = Object.keys(by).map(function (k) { var v = by[k], a = v.answers;
+        if (typeof a === "string") { try { a = JSON.parse(a); } catch (e) { a = {}; } }
+        return { token: v.token, name: v.name || "?", answers: a || {}, comment: v.comment || "", at: v.at || "" }; });
+      vs.sort(function (a, b) { return a.at < b.at ? -1 : 1; });
+      wait.remove();
+      var tot = {}; D.slots.forEach(function (s) { tot[s.id] = { yes: 0, maybe: 0, no: 0 }; });
+      vs.forEach(function (v) { Object.keys(v.answers).forEach(function (k) { if (tot[k] && tot[k][v.answers[k]] != null) tot[k][v.answers[k]]++; }); });
+      D.slots.forEach(function (s) {
+        var t = tallies[s.id]; t.innerHTML = "";
+        if (!vs.length) return;
+        var bar = el("span", "bar"), y = el("i", "y"), m = el("i", "m");
+        y.style.width = (100 * tot[s.id].yes / vs.length) + "%"; m.style.width = (100 * tot[s.id].maybe / vs.length) + "%";
+        bar.appendChild(y); bar.appendChild(m); bar.setAttribute("aria-hidden", "true"); t.appendChild(bar);
+        t.appendChild(el("span", null, T.yes + " " + tot[s.id].yes + " · " + T.maybe + " " + tot[s.id].maybe + " · " + T.no + " " + tot[s.id].no));
+      });
+      if (!vs.length) { box.appendChild(el("p", "note", T.none)); return; }
+      var wrap = el("div", "matrix"), tb = el("table"), hr = el("tr"); hr.appendChild(el("th"));
+      D.slots.forEach(function (s) { var th = el("th", null, fmt(s.start, HOME, { weekday: "short", day: "numeric", month: "short" })); th.appendChild(el("br")); th.appendChild(document.createTextNode(span(s))); hr.appendChild(th); });
+      hr.appendChild(el("th")); tb.appendChild(hr);
+      var mark = { yes: ["y", "✓"], maybe: ["m", "~"], no: ["n", "✗"] };
+      vs.forEach(function (v) {
+        var tr = el("tr", v.token === mine.token ? "me" : null);
+        tr.appendChild(el("td", null, v.name + (v.token === mine.token ? " (" + T.you + ")" : "")));
+        D.slots.forEach(function (s) { var a = mark[v.answers[s.id]]; var td = el("td", a ? a[0] : null, a ? a[1] : ""); if (a) td.title = T[v.answers[s.id]]; tr.appendChild(td); });
+        tr.appendChild(el("td", "cm", v.comment)); tb.appendChild(tr);
+      });
+      var ft = el("tr"); ft.appendChild(el("td", null, T.total));
+      D.slots.forEach(function (s) { ft.appendChild(el("td", null, tot[s.id].yes + " / " + tot[s.id].maybe)); }); ft.appendChild(el("td")); tb.appendChild(ft);
+      wrap.appendChild(tb); box.appendChild(wrap);
+    }).catch(function () { wait.textContent = ""; });
+  }
+  refresh();
+})();
+</script></body></html>
